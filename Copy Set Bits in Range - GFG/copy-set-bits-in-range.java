@@ -23,12 +23,15 @@ class GFG{
 
 
 //User function Template for Java
-
+// Time Complexity : O(R-l)
+// Space Complexity : O(1)
 class Solution{
     static int setSetBit(int x, int y, int l, int r){
         for(int i=l;i<=r;i++)
         {
+            // find the Set bits in y
             if((y&(1<<(i-1)))!=0)
+            // Assign the set bits in X
                 x=x|(1<<(i-1));
         }
         
