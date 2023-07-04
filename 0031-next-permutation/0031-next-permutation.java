@@ -1,48 +1,31 @@
 // Time Complexity : O(N)
 // Space Complexity : O(1)
 class Solution {
-    public void nextPermutation(int[] nums) {
-    int n = nums.length; // size of the array.
+    public void nextPermutation(int[] A) 
+    {
+    int n = A.length; 
+    if(A == null || n == 0)
+    return;
 
-    // Step 1: Find the break point:
-    int ind = -1; // break point
-    for (int i = n - 2; i >= 0; i--) {
-        if (nums[i] < nums[i + 1]) {
-            // index i is the break point
-            ind = i;
-            break;
-        }
+    int i = n-2;
+    while(i >= 0 && A[i]>=A[i+1]) i--;
+    if(i >= 0)
+    {
+        int j =  n - 1;
+        while(A[j] <= A[i]) j--;
+        swap(A , i , j); 
     }
-
-    // If break point does not exist:
-    if (ind == -1) {
-        // reverse the whole array:
-        reverse(nums, 0, n - 1);
-        return;
-    }
-
-    // Step 2: Find the next greater element
-    //         and swap it with nums[ind]:
-    for (int i = n - 1; i > ind; i--) {
-        if (nums[i] > nums[ind]) {
-            int tmp = nums[i];
-            nums[i] = nums[ind];
-            nums[ind] = tmp;
-            break;
-        }
-    }
-
-    // Step 3: reverse the right half:
-    reverse(nums, ind + 1, n - 1);
+    reverse(A , i + 1 , n-1);
 }
 
-private void reverse(int[] nums, int start, int end) {
-    while (start < end) {
-        int temp = nums[start];
-        nums[start] = nums[end];
-        nums[end] = temp;
-        start++;
-        end--;
-    }
+public void swap(int[] A, int i, int j) 
+{
+   int t = A[i];
+   A[i] = A[j];
+   A[j] = t;
+}
+public void reverse(int[] A, int i, int j) {
+   while(i<j)
+   swap(A,i++,j--);
 }
 }
