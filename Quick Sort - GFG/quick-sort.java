@@ -31,39 +31,48 @@ class Sorting
 // } Driver Code Ends
 
 // Time Complexity : O(NlogN)
-// Space Complexity : O(log N)  // Average & Best Case
+// Space Complexity : O(N)  // Average & Best Case
 class Solution
 {
-    //Function to sort an array using quick sort algorithm.
-    static void quickSort(int arr[], int low, int high) {
-        if (low < high) {
-            int p = partition(arr, low, high);
-            quickSort(arr, low, p - 1);
-            quickSort(arr, p + 1, high);
-        }
+     //Function to sort an array using quick sort algorithm.
+    static void quickSort(int arr[], int low, int high)
+    {
+        // code here
+        if (low < high)
+	    {
+	         
+	        // pi is partitioning index, arr[p]
+	        // is now at right place
+	        int pi = partition(arr, low, high);
+	 
+	        // Separately sort elements before
+	        // partition and after partition
+	        quickSort(arr, low, pi - 1);
+	        quickSort(arr, pi + 1, high);
+	    }
     }
-    
-    static int partition(int arr[], int low, int high) {
-        // Select last element as pivot
-        int pivot = arr[high];
-        // Keep i as low-1 and will increment i when the element will be smaller than pivot
-        int i = low - 1;
-        for (int j = low; j < high; j++) {
-            // Check if current element is smaller than pivot, if yes,
-            // then increment i and swap it with current element
-            if (arr[j] < pivot) {
-                i++;
-                int temp = arr[j];
-                arr[j] = arr[i];
-                arr[i] = temp;
-            }
-        }
-        // In the last, we need to place the pivot element to its correct position
-        // means all the elements to its left are smaller and greater on the right
-        i++;
-        int temp = arr[i];
-        arr[i] = arr[high];
-        arr[high] = temp;
-        return i;
-    }
+    //lomuto
+    static int partition(int arr[], int l, int h)
+    {
+        // your code here
+        int pivot=arr[h];
+		int i=l-1;
+		
+	for( int j=l;j<=h-1;j++)
+		{
+			if(arr[j]<pivot)
+			{
+				i++;
+				//swap ar[i],arr[j]
+				int t=arr[i];
+				arr[i]=arr[j];
+				arr[j]=t;
+			}
+		}
+		int t= arr[i+1];
+		arr[i+1]=arr[h];
+		arr[h]=t;
+		
+		return i+1;
+    } 
 }
