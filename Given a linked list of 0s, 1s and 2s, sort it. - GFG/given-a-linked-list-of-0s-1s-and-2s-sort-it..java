@@ -78,46 +78,36 @@ class Node
     }
 }
 */
+// Time Complexity : O(N)
+// Space Complexity : O(1)
 class Solution
 {
     //Function to sort a linked list of 0s, 1s and 2s.
     static Node segregate(Node head)
     {
-int zeros=0,ones=0,twos=0;
-        
-        Node head1=head;
-        while(head1!=null){
-            if(head1.data==0)
-            zeros++;
-            if(head1.data==1)
-            ones++;
-            if(head1.data==2)
-            twos++;
-            
-            head1=head1.next;
+        int z=0,o=0,t=0;
+        Node temp=head;
+        while(temp!=null){
+            if(temp.data==0)z++;
+            else if(temp.data==1)o++;
+            else t++;
+            temp=temp.next;
         }
-        
-        head1=head;
-        
-        while(head1!=null){
-            if(zeros!=0){
-            head1.data=0;
-            zeros--;
+        temp=head;
+        while(temp!=null){
+            if(z!=0){
+                temp.data=0;
+                z--;
             }
-            else if(ones!=0){
-            head1.data=1;
-            ones--;
+            else if(o!=0){
+                temp.data=1;
+                o--;
             }
-            else if (twos!=0){
-            head1.data=2;
-            twos--;
-            }
-            
-            head1=head1.next;
+            else temp.data=2;
+            temp=temp.next;
         }
-        
         return head;
-            }
+    }
 }
 
 
