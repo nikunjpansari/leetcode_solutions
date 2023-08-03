@@ -30,82 +30,56 @@ class Main {
 // Time Complexity: O(N+M)
 // Space Complexity: O(N)
 //User function Template for Java
+class pair{
+    int first,second;
+    pair(int a,int b){
+        first=a;
+        second=b;
+    }
+}
 class Solution {
-
+  	void dfs(int node,boolean vis[],ArrayList<Integer> topo,ArrayList<pair> adj[]){
+	    vis[node]=true;
+	    for(pair x:adj[node]){
+	        if(vis[x.first]==false){
+	            dfs(x.first,vis,topo,adj);
+	        }
+	    }
+	    topo.add(node);
+	}
 	public int[] shortestPath(int N,int M, int[][] edges) {
-		int dis[]=new int [N];
-
-    for(int i=0;i<N;i++){
-
-        dis[i]=Integer.MAX_VALUE;
-
-    }
-
-    dis[0]=0;
-
-    Stack <Integer> st=new Stack<>();
-
-    boolean vis[]=new boolean[N];
-
-    for(int i=0;i<N;i++){
-
-        if(!vis[i])
-
-        topsort(edges,vis,i,st);
-
-    }
-
-  
-
-    while(!st.isEmpty()){
-
-        int k=st.pop();
-
-        for(int i=0;i<M;i++){
-
-            if(edges[i][0]==k && dis[k]!=Integer.MAX_VALUE){
-
-                if(dis[edges[i][1]]>(dis[k]+edges[i][2]))
-
-                dis[edges[i][1]]=dis[k]+edges[i][2];
-
-            }
-
-        }
-
-    }
-
-    for(int i=0;i<N;i++){
-
-        if(dis[i]==Integer.MAX_VALUE)
-
-        dis[i]=-1;
-
-    }
-
-    return dis;
-
-  }
-
-  
-
-  public void topsort(int edges[][],boolean vis[],int s,Stack<Integer> st){
-
-      vis[s]=true;
-
-      for(int i=0;i<edges.length;i++){
-
-          if(edges[i][0]==s){
-
-              if(!vis[edges[i][1]])
-
-              topsort(edges,vis,edges[i][1],st);
-
-          }
-
-      }
-
-      st.push(s);
-
-  }
+		//Code here
+		boolean vis[] = new boolean[N];
+		Arrays.fill(vis,false);
+	    ArrayList<Integer> topo = new ArrayList<>();
+	    ArrayList<pair> adj[]=new ArrayList[N];
+	    for(int i=0;i<N;i++) {
+			adj[i]=new ArrayList<>();
+		}
+	    for(int i=0;i<M;i++){
+	        adj[edges[i][0]].add(new pair(edges[i][1],edges[i][2]));
+	    }
+	    for(int i=0;i<N;i++){
+	        if(vis[i]==false){
+	            dfs(i,vis,topo,adj);
+	        }
+	    }
+	    Collections.reverse(topo);
+	    int dis[] = new int[N];
+	    Arrays.fill(dis,Integer.MAX_VALUE);
+	    dis[0]=0;
+	    for(int i=0;i<N;i++){
+	        if(dis[topo.get(i)]!=Integer.MAX_VALUE){
+	            for(pair x:adj[topo.get(i)]){
+	                if(dis[topo.get(i)]+x.second<dis[x.first]){
+	                    dis[x.first]=dis[topo.get(i)]+x.second;
+	                }
+	            }
+	        }
+	    }
+	    for(int i=0;i<N;i++){
+	        if(dis[i]==Integer.MAX_VALUE)dis[i]=-1;
+	    }
+	    return dis;
+	}
 }
