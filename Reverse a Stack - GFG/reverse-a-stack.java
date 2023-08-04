@@ -42,7 +42,8 @@ class GFG
 
 
 //User function Template for Java
-
+// Time Complexity: O(N)
+// Space Complexity : O(N)
 class Solution
 { 
     static void reverse(Stack<Integer> s)
