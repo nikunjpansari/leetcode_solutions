@@ -33,22 +33,19 @@ class GfG
 
 
 //User function Template for Java
-
+// Time Complexity : O(N*logN)
+// Space Complexity : O(1)
 class Solution
 {
-    public long findMinDiff (ArrayList<Integer> a, int n, int m)
+    public long findMinDiff (ArrayList<Integer> a, int n, int k)
     {
         Collections.sort(a);
-        int diff = Integer.MAX_VALUE, min = Integer.MAX_VALUE;
-        diff = a.get(m-1) - a.get(0);
-        min = diff;
-        for(int i=m; i<n; i++)
+        long min = Integer.MAX_VALUE;
+        for(int i=0;i<=(n-k);i++)
         {
-            diff = a.get(i) - a.get(i-m+1);        
-            min = Math.min(min, diff);
-           
+            if(a.get(k-1+i) - a.get(i) < min)
+            min = a.get(k-1+i) - a.get(i);
         }
-        
         return min;
     }
 }
