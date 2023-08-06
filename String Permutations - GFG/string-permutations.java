@@ -34,30 +34,35 @@ class Main {
 //User function Template for Java
 // Time Complexity : O(N!)
 // Space Complexity : O(N)
+
 class Solution
 {
-   public ArrayList<String> permutation(String S) {
+     public ArrayList<String> permutation(String S) {
         ArrayList<String> ans = new ArrayList<>();
-        backtrack(S, new StringBuilder(), new boolean[S.length()], ans);
+        int n = S.length();
+        int[] freq = new int[n];
+        Arrays.fill(freq, 0);
+
+        help("", ans, freq, S);
+
         Collections.sort(ans);
         return ans;
     }
 
-    private void backtrack(String S, StringBuilder cur, boolean[] vis, ArrayList<String> ans) {
-        if (cur.length() == S.length()) {
-            ans.add(cur.toString());
+    private void help(String str, ArrayList<String> ans, int[] freq, String S) {
+        if (str.length() == S.length()) {
+            ans.add(str);
             return;
         }
 
         for (int i = 0; i < S.length(); i++) {
-            if (!vis[i]) {
-                cur.append(S.charAt(i));
-                vis[i] = true;
-                backtrack(S, cur, vis, ans);
-                vis[i] = false;
-                cur.deleteCharAt(cur.length() - 1);
+            if (freq[i] == 0) {
+                str += S.charAt(i);
+                freq[i] = 1;
+                help(str, ans, freq, S);
+                freq[i] = 0;
+                str = str.substring(0, str.length() - 1);
             }
         }
     }
-	   
 }
