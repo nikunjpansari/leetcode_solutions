@@ -23,22 +23,22 @@ class GFG {
 }
 // } Driver Code Ends
 
-
-
+// Time Complexity : O(|str1|*|str2|)
+// Space Complexity : O(|str1|*|str2|)
 
 class Solution
 {
     //Function to find the length of longest common subsequence in two strings.
     static int lcs(int x, int y, String text1, String text2)
     {
-         char[] chars1 = text1.toCharArray();
-        char[] chars2 = text2.toCharArray();
-        int[][] dp = new int[chars1.length + 1][chars2.length + 1];
-        for (int i = 0; i < chars1.length; i++) {
-            for (int j = 0; j < chars2.length; j++)
-                dp[i+1][j+1] = chars1[i] == chars2[j]? dp[i][j] + 1 : Math.max(dp[i][j+1], dp[i+1][j]);
+        char[] c1 = text1.toCharArray();
+        char[] c2 = text2.toCharArray();
+        int[][] dp = new int[c1.length + 1][c2.length + 1];
+        for (int i = 0; i < c1.length; i++) {
+            for (int j = 0; j < c2.length; j++)
+                dp[i+1][j+1] = c1[i] == c2[j]? dp[i][j] + 1 : Math.max(dp[i][j+1], dp[i+1][j]);
         }
-        return dp[chars1.length][chars2.length];
+        return dp[c1.length][c2.length];
     }
     
 }
