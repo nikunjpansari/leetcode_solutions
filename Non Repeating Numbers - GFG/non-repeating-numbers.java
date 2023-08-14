@@ -39,41 +39,31 @@ class GFG
 // Using Bitwise operators
 class Solution
 {
-     public int[] singleNumber(int[] arr)
+    public int[] singleNumber(int[] nums)
     {
-        int n=arr.length;
-        int all=0;
-        
-        for(int i =0; i<n; i++)
-        all = all^arr[i];
-        
-        //s2  rightmost set bit 
-        int m = all & -all;
-        
-        // s3
-        int g1=0; int g2=0;
-        for(int i =0; i<arr.length; i++)
-        {
-            if((m&arr[i])==0)
-                g1 ^= arr[i];
-            else
-                g2 ^= arr[i];
+        int x = 0,setBit=0;
+        for(int y:nums)x^=y;
+        for(int i=0;i<=32;i++){
+            int num = 1<<i;
+            if((num&x)!=0){
+                setBit=num;
+                break;
+            }
+        }
+        int first=0,second=0;
+        for(int y:nums){
+            if((y&setBit)!=0)first^=y;
+            else second^=y;
         }
         int ans[] = new int[2];
-        if(g1>g2)
-        {
-            ans[0]=g2; 
-            ans[1] = g1;
-            
+        if(first<=second){
+            ans[0]=first;
+            ans[1]=second;
         }
-        else
-         {
-             ans[0]=g1; 
-             ans[1] = g2;
-             
-         }
-         
-         return ans;
-    
+        else{
+            ans[0]=second;
+            ans[1]=first;
+        }
+        return ans;
     }
 }
