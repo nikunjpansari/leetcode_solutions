@@ -37,73 +37,42 @@ class GFG
 
 class Solution
 {
-   public boolean isSurrounded(int i, int j, int n, int m, int[][] matrix){
-        int count = 0;
-        
-        int x = i - 1, y = j - 1;
-        if(x >= 0 && y >= 0 && matrix[x][y] == 0){
-            count++;
-        }
-        
-        y = j;
-        if(x >= 0 && matrix[x][y] == 0){
-            count++;
-        }
-        
-        y = j + 1;
-        if(x >= 0 && y < m && matrix[x][y] == 0){
-            count++;
-        }
-        
-        x = i;
-        y = j - 1;
-        if(y >= 0 && matrix[x][y] == 0){
-            count++;
-        }
-        
-        y = j + 1;
-        if(y < m && matrix[x][y] == 0){
-            count++;
-        }
-        
-        x = i + 1;
-        y = j - 1;
-        if(x < n && y >= 0  && matrix[x][y] == 0){
-            count++;
-        }
-        
-        y = j;
-        if(x < n && matrix[x][y] == 0){
-            count++;
-        }
-        
-        y = j + 1;
-        if(x < n && y < m && matrix[x][y] == 0){
-            count++;
-        }
-        
-        if(count != 0 && count % 2 == 0){
-            // System.out.println(count);
-            return true;
-        }
-        
-        return false;
-    }
-    
-    public int Count(int[][] matrix)
+    public int  Count(int[][] matrix)
     {
-        int n = matrix.length;
-        int m = matrix[0].length;
-        
-        int count = 0;
-        for(int i = 0; i < n; i++){
-            for(int j = 0; j < m; j++){
-                if(matrix[i][j] == 1 && isSurrounded(i, j, n, m, matrix)){
-                    count++;
+    int[] dx = { -1, 1, 0, 0, -1, -1, 1, 1 };
+    int[] dy = { 0, 0, -1, 1, -1, 1, -1, 1 };
+
+    int ans = 0;
+
+    int n = matrix.length;
+    int m = matrix[0].length;
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            if (matrix[i][j] == 1) {
+                int cur = 0;
+                for (int k = 0; k < 8; k++) {
+                    int x = i + dx[k];
+                    int y = j + dy[k];
+
+                    if (isValid(x, y, n, m) && matrix[x][y] == 0) {
+                        cur++;
+                    }
+                }
+
+                if (cur > 0) {
+                    ans += (cur % 2 == 0) ? 1 : 0;
                 }
             }
         }
-        
-        return count;
     }
+
+    return ans;
+}
+
+boolean isValid(int x, int y, int n, int m) {
+    return x >= 0 && x < n && y >= 0 && y < m;
+}
+
+    
 }
