@@ -68,19 +68,32 @@ class GFG {
 
 
 class Solution {
-    public static int findMinOperation(int n, int[][] arr) {
-       int tsum = 0, rmax = 0, cmax = 0;
-        for(int i = 0;i<n;i++){
-            int rsum = 0, csum = 0;
-            for(int j = 0;j<n;j++){
-                rsum += arr[i][j];
-                csum += arr[j][i];
-            }
-            rmax = Math.max(rmax, rsum);
-            cmax = Math.max(cmax, csum);
-            tsum += rsum;
+   public static int findMinOperation(int n, int[][] matrix) 
+   {
+    int[] values = new int[n];
+    int need = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        int row, col;
+        row = col = 0;
+
+        for (int j = 0; j < n; j++) 
+        {
+            row += matrix[j][i];
+            col += matrix[i][j];
         }
-        return Math.max(cmax, rmax)*n-tsum;
+
+        need = Math.max(need, Math.max(row, col));
+        values[i] = row;
     }
+
+    int ans = 0;
+    for (int i : values)
+        ans += need - i;
+
+    return ans;
+}
+
 }
         
