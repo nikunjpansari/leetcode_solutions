@@ -19,31 +19,57 @@ class GfG {
 // } Driver Code Ends
 
 
+
+// Time Complexity : O(S)
+// Space Complexity : O(S)
 // User function Template for Java
 
 class Solution {
     public int longestkSubstr(String s, int k)
     {
-        int ans = -1;
-        int i=0,j=0;
-        
-        HashMap<Character,Integer> hm = new HashMap<>();
-        
-        while(j<s.length()){
-            char ch = s.charAt(j);
-            hm.put(ch,hm.getOrDefault(ch,0)+1);
-            if(hm.size()==k) ans = Math.max(ans,j-i+1);
+        HashMap<Character, Integer> m = new HashMap<>();
+        int uniq_ch = 0, i = 0, j = 0, ans = 0, n = s.length();
+
+        while (j < n)
+        {
+            while (j < n) 
+            {
+                char ch = s.charAt(j);
+                if (!m.containsKey(ch) || m.get(ch) == 0)
+                uniq_ch++;
+                
+                m.put(ch, m.getOrDefault(ch, 0) + 1);
+             
+                if (uniq_ch > k) 
+                break;
+                
+                j++;
+            }
+
+          
+            if (uniq_ch >= k) 
+            ans = Math.max(ans, j - i);
             
-            while(hm.size()>k){
-                char x = s.charAt(i);
-                hm.put(x,hm.get(x)-1);
-                if(hm.get(x)==0){
-                    hm.remove(x);
-                }
+            if (j == n)
+            break;
+        
+            while (i < n) 
+            {
+                char ch = s.charAt(i);
+                if (m.get(ch) == 1) 
+                uniq_ch--;
+                
+                m.put(ch, m.get(ch) - 1);
+
+                if (uniq_ch == k) break;
                 i++;
             }
+            i++;
             j++;
         }
+        if (ans == 0) 
+        return -1;
+        
         return ans;
     }
 }
