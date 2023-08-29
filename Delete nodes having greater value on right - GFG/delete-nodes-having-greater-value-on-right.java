@@ -79,6 +79,7 @@ class Node {
 }
 */
 // Time Complexity : O(N)
+// Space Complexity : O(1)
 class Solution
 {
     Node compute(Node head)
