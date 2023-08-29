@@ -78,30 +78,32 @@ class Node {
   }
 }
 */
+// Time Complexity : O(N)
 class Solution
 {
     Node compute(Node head)
     {
-        head = rev(head);
+        head= rev(head);
         Node node = head;
-        
-        while(node!=null && node.next!=null){
-            if(node.data>node.next.data) node.next = node.next.next;
-            else node = node.next;
+        while(node!=null && node.next!=null)
+        {
+            if(node.data >  node.next.data)
+            node.next = node.next.next;
+            else
+            node=node.next;
         }
-        
         return rev(head);
     }
-    
-    Node rev(Node head){
-        Node prev = null, next =null;
-        
-        while(head!=null){
-            next = head.next;
-            head.next = prev;
-            prev = head;
-            head = next;
-        }
+    Node rev(Node head)
+    {
+    Node prev=null , next=null;
+    while(head!=null)
+    {
+        next=head.next;
+        head.next=prev;
+        prev=head;
+        head=next;
+    }
         return prev;
     }
 }
