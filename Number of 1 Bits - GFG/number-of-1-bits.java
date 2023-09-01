@@ -22,14 +22,17 @@ class GFG {
 
 // User function Template for Java
 class Solution {
-    static int setBits(int N) {
-      int res=0;
-        while(N>0)
-        {
-            if(N%2!=0) 
-            res++;
-            N/=2;
-        }
-        return res;
+    static int setBits(int n) 
+    {
+       int res = 0;
+       int r = 0;
+       while(n>0)
+       {
+            r=n%2;
+            if(r==1)
+            res+=1;
+            n/=2;
+       }
+       return res;
     }
 }
