@@ -10,6 +10,7 @@ class GFG {
 	public static void main(String[] args) throws IOException
 	{
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	    PrintWriter out=new PrintWriter(System.out);
         int t = Integer.parseInt(br.readLine().trim()); // Inputting the testcases
         while(t-->0)
         {
@@ -25,9 +26,9 @@ class GFG {
             }
             
             Solution obj = new Solution();
-            System.out.println(obj.countSubArrayProductLessThanK(a, n, k));
-            
+            out.println(obj.countSubArrayProductLessThanK(a, n, k));
         }
+        out.close();
 	}
 }
 
@@ -40,23 +41,21 @@ class GFG {
 
 class Solution {
     
-    public int countSubArrayProductLessThanK(long a[], int n, long k)
+    public long countSubArrayProductLessThanK(long a[], int n, long k)
     {
-        long p=1;
-        int ans=0,i=0,j=0;
-        for(i=0, j=0; j<n ; j++)
+    long cnt = 0;
+    int i = 0;
+    long prod = 1;
+    for(int j=0;j<n;j++)
+    {
+        prod *= a[j];
+        while(prod>=k && i<=j)
         {
-            p = p*a[j];
-            while(p>=k && i<j)
-            {
-                p/=a[i];
-                i++;
-            }
-            
-            if(p<k)
-            ans+= (j-i+1);
-        
+            prod /= a[i];
+            i++;
         }
-        return ans;
+        cnt+=(j-i+1);
+    }
+    return cnt;
     }
 }
