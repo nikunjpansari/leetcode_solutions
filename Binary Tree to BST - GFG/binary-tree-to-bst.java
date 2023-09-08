@@ -117,43 +117,39 @@ class Node
 
 class Solution
 {
-   Node binaryTreeToBST(Node root) 
-   {
-        if (root == null) 
-            return null;
+    Node binaryTreeToBST(Node root)
+    {
+       if(root==null)
+       return null;
+       
+       ArrayList<Integer> v = new ArrayList<>();
+       inorder(root,v);
+       Collections.sort(v);
+       
+       root = null;
+       root = bstUtils(v,0,v.size()-1);
+       return root;
+    }
+    Node bstUtils(ArrayList<Integer> v , int s,int e)
+    {
+        if(s > e)
+        return null;
         
-        ArrayList<Integer> v = new ArrayList<>();
-        inorder(root, v);
-        Collections.sort(v);
-
-        root = null;
-        root = bstUtil(v, 0, v.size() - 1);
+        int mid=(s+e)/2;
+        Node root =  new Node(v.get(mid));
+        root.left=bstUtils(v,s,mid-1);
+        root.right=bstUtils(v,mid+1,e);
         return root;
     }
-
-    Node bstUtil(ArrayList<Integer> v, int s, int e) 
+    
+    public void inorder(Node root , ArrayList<Integer> v)
     {
-        
-        if (s > e) 
-            return null;
-
-        int mid = (s + e) / 2;
-        
-        Node root = new Node(v.get(mid));
-        root.left = bstUtil(v, s, mid - 1);
-        root.right = bstUtil(v, mid + 1, e);
-        
-        return root;
-    }
-
-    void inorder(Node root, ArrayList<Integer> v) 
-    {
-        if (root == null) 
-            return;
-        
-        inorder(root.left, v);
-        v.add(root.data);
-        inorder(root.right, v);
+    if(root==null)
+    return;
+    
+    inorder(root.left,v);
+    v.add(root.data);
+    inorder(root.right,v);
     }
 }
  
