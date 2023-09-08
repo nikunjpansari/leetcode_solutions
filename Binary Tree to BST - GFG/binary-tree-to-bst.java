@@ -117,29 +117,43 @@ class Node
 
 class Solution
 {
-    ArrayList<Integer> a=new ArrayList<>();
-    
-    Node binaryTreeToBST(Node root)
-    {  
-        recurse(root);
-        root=null;
+   Node binaryTreeToBST(Node root) 
+   {
+        if (root == null) 
+            return null;
         
-        Collections.sort(a);
+        ArrayList<Integer> v = new ArrayList<>();
+        inorder(root, v);
+        Collections.sort(v);
+
+        root = null;
+        root = bstUtil(v, 0, v.size() - 1);
+        return root;
+    }
+
+    Node bstUtil(ArrayList<Integer> v, int s, int e) 
+    {
         
-        for(int i:a) 
-        System.out.print(i+" ");
+        if (s > e) 
+            return null;
+
+        int mid = (s + e) / 2;
+        
+        Node root = new Node(v.get(mid));
+        root.left = bstUtil(v, s, mid - 1);
+        root.right = bstUtil(v, mid + 1, e);
         
         return root;
     }
-    
-     void recurse(Node root)
-     {
-        if(root!=null)
-        {
-            a.add(root.data);
-            recurse(root.left);
-            recurse(root.right);
-        }
+
+    void inorder(Node root, ArrayList<Integer> v) 
+    {
+        if (root == null) 
+            return;
+        
+        inorder(root.left, v);
+        v.add(root.data);
+        inorder(root.right, v);
     }
 }
  
