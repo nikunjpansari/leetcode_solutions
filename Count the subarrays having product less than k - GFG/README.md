@@ -9,7 +9,7 @@ a[] = {1, 2, 3, 4}
 7
 <strong>Explanation:</strong>
 The contiguous subarrays are {1}, {2}, {3}, {4} 
-{1, 2}, {1, 2, 3} and {2, 3} whose count is 7.</span></span></pre>
+{1, 2}, {1, 2, 3} and {2, 3}, in all these subarrays<br></span></span><span style="font-family: arial,helvetica,sans-serif;"><span style="font-size: 20px;">product of elements is less than 10, count of<br>such subarray is 7.<br>{2,3,4} will not be a valid subarray, because <br>2*3*4=24 which is greater than 10.</span></span></pre>
 <p><span style="font-family: arial,helvetica,sans-serif;"><span style="font-size: 20px;"><strong>Example 2:</strong></span></span></p>
 <pre><span style="font-family: arial,helvetica,sans-serif;"><span style="font-size: 20px;"><strong>Input:
 </strong>n = 7 , k = 100
