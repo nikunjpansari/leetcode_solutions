@@ -29,11 +29,11 @@ class Reverse
 {
     // Complete the function
     // str: input string
-    public static String reverseWord(String str)
+    public static String reverseWord(String s)
     {
-        StringBuilder s = new StringBuilder();
-        s.append(str);
-        s=s.reverse();
-        return s.toString();
+        StringBuilder str = new StringBuilder();
+        str.append(s);
+        str.reverse();
+        return str.toString();
     }
 }
