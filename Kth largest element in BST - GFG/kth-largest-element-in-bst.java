@@ -116,22 +116,20 @@ class Node
 */
 class Solution
 {
-   public static void inorder(Node node, ArrayList<Integer> list){
-    if(node==null)
-        {
-            return;
-        }
-        inorder(node.left,list);
-        list.add(node.data);
-        inorder(node.right,list);
-    }
-   
+    // return the Kth largest element in the given BST rooted at 'root'
     public int kthLargest(Node root,int K)
     {
-       
-        ArrayList<Integer> list = new ArrayList<>();
-        inorder(root,list);
-        //Collections.sort(list);
-        return (list.get(list.size()-K));
+        ArrayList<Integer> v = new ArrayList<>();
+        inorder(root,v);
+        return v.get(v.size()-K);
+    }
+    public static void inorder(Node node,ArrayList<Integer> v)
+    {
+    if(node==null)
+    return;
+    
+    inorder(node.left,v);
+    v.add(node.data);
+    inorder(node.right,v);
     }
 }
