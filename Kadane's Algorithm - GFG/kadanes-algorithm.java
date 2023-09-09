@@ -30,27 +30,24 @@ class Main {
 
 // } Driver Code Ends
 
-// Time Complexity : O(N)
-// Space Complexity : O(1)
-// Kadane's Algorithm
+
 class Solution{
 
-    // arr: input array
-    // n: size of array
-    //Function to find the sum of contiguous subarray with maximum sum.
-    long maxSubarraySum(int arr[], int n){
+
+    long maxSubarraySum(int nums[], int n){
         
-        long sum = 0;
-        long mx = Long.MIN_VALUE;
-        for(int i = 0 ;i<n;i++)
+        long max = Integer.MIN_VALUE;
+        long curr = 0;
+        for(int i=0;i<n;i++)
         {
-            sum += arr[i];
-            if(sum>mx)
-            mx=sum;
-            if(sum<0)
-            sum=0;
+            curr += nums[i];
+            if(max<curr)
+            max=curr;
+            if(curr<0)
+            curr=0;
         }
-        return mx;
+        return max;
+        
     }
     
 }
