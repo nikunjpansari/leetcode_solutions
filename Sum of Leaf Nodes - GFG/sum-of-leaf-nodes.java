@@ -63,13 +63,14 @@ class GfG
     public int SumofLeafNodes(Node root)
     {
         if(root == null)
-            return 0;
+        return 0;
         
-        if(root.left == null && root.right == null)
+        if(root.left== null && root.right==null)
         return root.data;
         
         int l = SumofLeafNodes(root.left);
         int r = SumofLeafNodes(root.right);
-        return l + r;
+        
+        return l+r;
     }
 }
