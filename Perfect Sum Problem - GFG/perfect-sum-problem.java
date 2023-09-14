@@ -24,30 +24,35 @@ class GfG
 }    
 // } Driver Code Ends
 
-
-
-
 class Solution{
-
 	int mod=1000000007;
-
+	
 	public int perfectSum(int arr[],int n, int sum) 
 	{ 
-	    int dp[][]=new int[n][sum+1];
-	   for(int ind=0;ind<n;ind++){
-	       for(int s=0;s<=sum;s++){
-	               if(ind==0){
-                    if(s==0 && arr[0]==0)dp[ind][s]= 2;
-                    else if(s==0 || s==arr[0])dp[ind][s]= 1;
-                    else dp[ind][s]= 0;
-                    }else{
+	   int dp[][]=new int[n][sum+1];
+	   
+	   for(int i=0;i<n;i++)
+	   {
+	       for(int j=0;j<=sum;j++)
+	       {
+	               if(i==0)
+	               {
+                    if(j==0 && arr[0]==0)
+                    dp[i][j]= 2;
                     
+                    else if(j ==0 || j==arr[0])
+                    dp[i][j]= 1;
                     
+                    else dp[i][j]= 0;
+                    }
+                    else
+                    {
+                    int t=dp[i-1][j];
+                    int m=0;
                     
-                    int nt=dp[ind-1][s];
-                    int t=0;
-                    if(arr[ind]<=s)t=dp[ind-1][s-arr[ind]];
-                     dp[ind][s]=(nt+t)%mod;
+                    if(arr[i]<=j)
+                    m=dp[i-1][j-arr[i]];
+                     dp[i][j]=(t+m)%mod;
                     }
 	       }
 	   }
