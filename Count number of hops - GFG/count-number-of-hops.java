@@ -41,23 +41,21 @@ class Solution
     //Function to count the number of ways in which frog can reach the top.
     static long countWays(int n)
     {
-    if(n==1)
-    return 1;
-    
-    if(n==2)
-    return 2;
-    
-    long a=1,b=1,c=2;
-    for(int i=3;i<=n;i++)
-    {
-    long t=c;
-    c=(a+b+c)%1000000007;
-    a=b;
-    b=t;
-        
-    }
-    return c;
-    
+       if(n==1)
+       return 1;
+       
+       if(n==2)
+       return 2;
+       
+       long a=1,b=1,c=2;
+       for(int i=3;i<=n;i++)
+       {
+           long t=c;
+           c=(a+b+c)%1000000007;
+           a=b;
+           b=t;
+       }
+       return c;
     }
     
 }
