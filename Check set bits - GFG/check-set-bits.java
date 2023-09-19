@@ -23,9 +23,9 @@ class GFG
 //User function Template for Java
 class Solution{
     static int isBitSet(int N){
-         if (N != 0 && Integer.bitCount(N + 1) == 1) 
-            return 1;
-        else
-            return 0;
+       if(N != 0 && Integer.bitCount(N+1)==1)
+       return 1;
+       else
+       return 0;
     }
 }
