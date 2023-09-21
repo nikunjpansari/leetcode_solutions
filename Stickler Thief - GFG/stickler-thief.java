@@ -33,20 +33,19 @@ class GFG
 
 class Solution
 {
+    //Function to find the maximum money the thief can get.
     public int FindMaxSum(int arr[], int n)
     {
         int a = 0;
         int b = 0;
-        
-        for(int val : arr)
+        for(int i: arr)
         {
-            int a1 = b + val;
-            int b1 = Math.max(a , b);
+            int a1 = b + i;
+            int b1 = Math.max(a,b);
             
             a = a1;
             b = b1;
         }
-        
-        return Math.max(a , b);
+    return Math.max(a,b);
     }
 }
