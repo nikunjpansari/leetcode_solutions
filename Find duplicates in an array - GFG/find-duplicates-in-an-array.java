@@ -20,6 +20,7 @@ class GFG {
 }
 
 // } Driver Code Ends
+
 class Solution {
     public static ArrayList<Integer> duplicates(int arr[], int n) {
        HashSet<Integer> list = new HashSet<>();
