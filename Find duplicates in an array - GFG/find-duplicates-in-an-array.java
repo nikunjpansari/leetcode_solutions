@@ -21,20 +21,22 @@ class GFG {
 
 // } Driver Code Ends
 
+
 class Solution {
-    public static ArrayList<Integer> duplicates(int arr[], int n) {
-       HashSet<Integer> list = new HashSet<>();
-        HashSet<Integer> set = new HashSet<>();
-        for(int element:arr){
-            if(!set.add(element)){
-                list.add(element);
-            }
-        }
-        ArrayList<Integer> items = new ArrayList<>(list);
-        Collections.sort(items);
-        if(items.isEmpty()){
-            items.add(-1);
-        }
-        return items;
+    public static ArrayList<Integer> duplicates(int a[], int n) {
+       HashSet<Integer> ls =  new HashSet<>();
+       HashSet<Integer> set =  new HashSet<>();
+       
+       for(int i : a){
+       if(!set.add(i))
+           ls.add(i);
+       }
+       ArrayList<Integer> res = new ArrayList<>(ls);
+       Collections.sort(res);
+       if(res.isEmpty())
+       res.add(-1);
+       
+       return res;
     }
 }
+
