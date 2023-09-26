@@ -21,20 +21,16 @@ class GFG {
 }
 // } Driver Code Ends
 
-
-//User function Template for Java
-
 class Solution {
     String removeDups(String S) {
-        Set<Character> hs=new HashSet<>();
-        String res="";
-        for(int i=0; i<S.length(); i++){
-            if(!hs.contains(S.charAt(i))){
-                res+=S.charAt(i);
-                hs.add(S.charAt(i));
-            }
-         
+        Set<Character> hs = new HashSet<>();
+        String res = "";
+        for(int i=0;i<S.length();i++)
+        {
+            if(!hs.contains(S.charAt(i)))
+            res += S.charAt(i);
+            hs.add(S.charAt(i));
         }
-           return res;
+        return res;
     }
 }
