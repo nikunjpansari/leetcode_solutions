@@ -50,33 +50,35 @@ class GFG {
 class Solution{
     // Function for finding maximum and value pair
     public static ArrayList<Integer> printClosest (int arr[], int brr[], int n, int m, int x) {
-        ArrayList<Integer> ans = new ArrayList<>();
-
-        int start = 0, end = m - 1;
-        int element1 = Integer.MIN_VALUE;
-        int element2 = Integer.MIN_VALUE;
-        int closestDiff = Integer.MAX_VALUE;
-
-        while (start < n && end >= 0) {
-            int sum = arr[start] + brr[end];
-            int absDiff = Math.abs(sum - x);
-
-            if (absDiff < closestDiff) {
-                closestDiff = absDiff;
-                element1 = arr[start];
-                element2 = brr[end];
+        int i = 0 , j = m -1 ;
+        ArrayList<Integer> ls = new ArrayList<>();
+        
+        int a = Integer.MIN_VALUE;
+        int b = Integer.MIN_VALUE;
+        int res = Integer.MAX_VALUE;
+        
+        while(i < n && j >= 0)
+        {
+            int sum =  arr[i] + brr[j];
+            int curr = Math.abs(sum - x);
+            
+            if(curr < res)
+            {
+            res= curr;
+            a = arr[i];
+            b = brr[j];
             }
-
-            if (sum > x) {
-                end--;
-            } else {
-                start++;
-            }
+            
+            if(sum > x) 
+            j--;
+            
+            else if(sum <= x)
+            i++;
         }
-
-        ans.add(element1);
-        ans.add(element2);
-
-        return ans;
+        
+        ls.add(a);
+        ls.add(b);
+        
+        return ls;
     }
 }
