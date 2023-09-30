@@ -41,42 +41,39 @@ class GFG
 }
 
 // } Driver Code Ends
-
-
-//User function Template for Java
-
 class Solution
 {
     void booleanMatrix(int matrix[][])
     {
-      int n = matrix.length;
-      int m = matrix[0].length;
-      
-      int[] row = new int[n];
-      Arrays.fill(row,-1);
-      
-      int[] col = new int[m];
-      Arrays.fill(col,-1);
-      
-      for(int i=0;i<n;i++)
-      {
-          for(int j =0 ;j<m;j++)
-          {
-              if(matrix[i][j]==1)
-              {
-                  row[i] = 1;
-                  col[j] = 1;
-              }
-
-          }
-      }
-      for(int i=0;i<n;i++)
-      {
-          for(int j =0 ;j<m;j++)
-          {
-              if( row[i] == 1 || col[j] == 1)
-              matrix[i][j]=1;
-          }
-      }
+    int n = matrix.length;
+    int m = matrix[0].length;
+    
+    int[] row = new int[n];
+    Arrays.fill(row,-1);
+    
+    int[] col = new int[m];
+    Arrays.fill(col,-1);
+    
+    for(int i = 0;i<n;i++){
+        for(int j=0;j<m;j++)
+        {
+            if(matrix[i][j] == 1)
+            {
+                row[i] = 1;
+                col[j] = 1;
+            }
+        }
+    }
+    
+    for(int i = 0;i<n;i++){
+        for(int j=0;j<m;j++)
+        {
+            if(row[i] == 1 || col[j] == 1)
+            {
+               matrix[i][j] = 1;
+            }
+        }
+    }
+    
     }
 }
