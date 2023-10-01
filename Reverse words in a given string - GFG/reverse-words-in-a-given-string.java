@@ -18,17 +18,22 @@ class GFG {
 
 // } Driver Code Ends
 
+
+
 class Solution 
 {
+    //Function to reverse words in a given string.
     String reverseWords(String S)
     {
-        String root="";
-        S=S.trim();
-        String arr[]=S.split("[.]");
-        for(int i=arr.length-1;i>0;i--){
-            root+=arr[i].trim()+".";
+        String str = "";
+        str = str.trim();
+        
+        String[] arr = S.split("[.]");
+        
+        for(int i = arr.length-1 ;i > 0;i--)
+        {
+            str += arr[i].trim() + ".";
         }
-        root=root+arr[0].trim();
-        return root;
+        return str + arr[0].trim();
     }
 }
