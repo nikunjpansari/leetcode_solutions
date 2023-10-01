@@ -36,7 +36,7 @@ class Solution {
         {
             s.add(i);
         }
-        Arrays.sort(arr);
+        //Arrays.sort(arr);
         
         for(int i=0;i<n;i++)
         {
