@@ -18,28 +18,27 @@ class GFG {
 }
 // } Driver Code Ends
 
+class Solution 
+{
+    int distinctSubsequences(String S) 
+    {
+        HashMap<Character, Integer> map = new HashMap<>();
+        int mod = 1000000007;
+        int n = S.length();
+        int[] dp = new int[n + 1];
+        dp[0] = 1;
 
-//User function Template for Java
+        for (int i = 1; i <= n; i++) {
+            dp[i] = (2 * dp[i - 1])%mod;
+            
+            char curr = S.charAt(i - 1);
 
-class Solution {
-    int distinctSubsequences(String str) {
-        int mod=(int)Math.pow(10,9)+7;
-        int n=str.length();
-        if(n==0) return 1;
-        HashMap<Character,Integer> map = new HashMap<>();
-        int dp[] = new int[n+1];
-        dp[0] = 1; dp[1]=2;
-        map.put(str.charAt(0),0);
-        for(int i=2; i<=n; i++){
-            char c=str.charAt(i-1);
-            dp[i]=(2*dp[i-1])%mod;
-            if(map.containsKey(c)){
-                int prevInd=map.get(c);
-                dp[i]=(dp[i]-dp[prevInd])%mod;
-                if(dp[i]<0) dp[i]+=mod;
-            }
-            map.put(c,i-1);
+            if (map.containsKey(curr)) 
+                dp[i] = (dp[i] - dp[map.get(curr)-1] + mod) % mod;
+ 
+            map.put(curr, i);
         }
+
         return dp[n];
     }
 }
