@@ -26,14 +26,12 @@ class GfG
 // } Driver Code Ends
 
 
-
-
 //User function Template for Java
 
 class Solution
 {
     String colName (long n)
     {
-          return n == 0 ? "" : colName(--n / 26) + (char)('A' + (n % 26));
+        return n == 0 ? "" : colName(--n/26) + (char)('A' + (n%26));
     }
 }
