@@ -18,27 +18,30 @@ class GFG {
     }
 }
 // } Driver Code Ends
+
 class Solution {
-    public int romanToDecimal(String s) {
+    public int romanToDecimal(String str) {
+        Map<Character,Integer> mp = new HashMap<>();
         
-        HashMap<Character, Integer> map = new HashMap<>();
-        map.put('I', 1);
-        map.put('V', 5);
-        map.put('X', 10);
-        map.put('L', 50);
-        map.put('C', 100);
-        map.put('D', 500);
-        map.put('M', 1000);
- 
-        int sum = map.get(s.charAt(s.length() - 1));
-        for (int i = 0; i < s.length() - 1; i++) 
+        mp.put('I',1);
+        mp.put('V',5);
+        mp.put('X',10);
+        mp.put('L',50);
+        mp.put('C',100);
+        mp.put('D',500);
+        mp.put('M',1000);
+        
+        int sum = mp.get(str.charAt(str.length() - 1));
+        
+        for(int i =0 ;i< str.length()-1;i++)
         {
-            if (map.get(s.charAt(i)) < map.get(s.charAt(i + 1)))
-                sum -= map.get(s.charAt(i));
-            else 
-                sum += map.get(s.charAt(i));
-        }
- 
+            
+        
+        if(mp.get(str.charAt(i)) < mp.get(str.charAt(i+1)))
+            sum -= mp.get(str.charAt(i));
+        else
+            sum += mp.get(str.charAt(i));
+        } 
         return sum;
     }
 }
