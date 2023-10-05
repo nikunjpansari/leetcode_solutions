@@ -27,39 +27,40 @@ class GfG
 class Solution
 {
     long substrCount (String s, int k) {
-        int n = s.length();
-        long ans = solve(s,k,n) - solve(s,k-1,n);
-        return ans;
+       int n = s.length();
+       long ans = solve(s,k,n) - solve(s,k-1,n);
+       return ans;
     }
-    private long solve(String s, int k,int n)
+    private long solve(String s, int k, int n)
     {
-        int i = 0 , j = 0 ;
+    
+        int i = 0 , j = 0;
         int[] a = new int[26];
+        
         long res = 0;
         int d = 0;
-        
-        
-        while(j<n)
+        while(j < n)
         {
             a[s.charAt(j) - 'a']++;
-            
             if(a[s.charAt(j) - 'a'] == 1)
-            d+=1;
+            d++;
             
             while(d > k)
             {
                if(a[s.charAt(i) - 'a'] == 1)
                {
                    d--;
-                   a[s.charAt(i) - 'a'] --;
+                   a[s.charAt(i) - 'a']--;
                }
                else
-                   a[s.charAt(i) - 'a'] --;
-                   i++;
-            } 
-               res += (j-i+1);
-               j++;
+               a[s.charAt(i) - 'a']--;
+               i++;
+            }
+            
+            res += (j-i+1);
+            j++;
         }
+        
         return res;
     }
 }
