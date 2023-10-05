@@ -28,26 +28,33 @@ class Driverclass
 
 // } Driver Code Ends
 
-
-//User function Template for Java
-// Time Complexity : O(N)
-// Space Complexity : O(no of characters)
 class Solution
 {
-    //Function to find the first non-repeating character in a string.
-    static char nonrepeatingCharacter(String S)
+    static char nonrepeatingCharacter(String s)
     {
-       HashMap<Character,Integer> mm = new HashMap<>();
-        for(int i=0;i<S.length();i++){
-            char c = S.charAt(i);
-            mm.putIfAbsent(c,0);
-            mm.put(c,mm.get(c)+1);
+    int[] frequency = new int[256];
+    Arrays.fill(frequency, 0);
+
+    Queue<Character> queue = new LinkedList<>();
+
+    for (int i = 0; i < s.length(); i++) {
+        char currentChar = s.charAt(i);
+        frequency[currentChar]++;
+        queue.add(currentChar);
+
+        while (!queue.isEmpty() && frequency[queue.peek()] > 1) {
+            queue.poll();
         }
-        for(int i=0;i<S.length();i++){
-            if(mm.get(S.charAt(i))==1)
-            return S.charAt(i);
-        }
-        return '$';
     }
+
+    while (!queue.isEmpty()) {
+        char firstNonRepeating = queue.poll();
+        if (frequency[firstNonRepeating] == 1) 
+            return firstNonRepeating;
+    }
+
+    return '$';
 }
+
+    }
 
