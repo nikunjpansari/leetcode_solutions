@@ -22,40 +22,44 @@ class GfG
 }
 // } Driver Code Ends
 
+
+
 class Solution
 {
-   public long substrCount(String s, int k) {
+    long substrCount (String s, int k) {
         int n = s.length();
-        long ans = ok(s, k, n) - ok(s, k - 1, n);
+        long ans = solve(s,k,n) - solve(s,k-1,n);
         return ans;
     }
-
-    private long ok(String s, int k, int n) {
-        int i = 0, j = 0;
-        int[] mp = new int[26];
-        long ans = 0;
-        int distinct = 0;
-
-        while (j < n) {
-            mp[s.charAt(j) - 'a']++;
-            if (mp[s.charAt(j) - 'a'] == 1) {
-                distinct++;
-            }
-
-            while (distinct > k) {
-                if (mp[s.charAt(i) - 'a'] == 1) {
-                    distinct--;
-                    mp[s.charAt(i) - 'a']--;
-                } else {
-                    mp[s.charAt(i) - 'a']--;
-                }
-                i++;
-            }
-
-            ans += (j - i + 1);
-            j++;
+    private long solve(String s, int k,int n)
+    {
+        int i = 0 , j = 0 ;
+        int[] a = new int[26];
+        long res = 0;
+        int d = 0;
+        
+        
+        while(j<n)
+        {
+            a[s.charAt(j) - 'a']++;
+            
+            if(a[s.charAt(j) - 'a'] == 1)
+            d+=1;
+            
+            while(d > k)
+            {
+               if(a[s.charAt(i) - 'a'] == 1)
+               {
+                   d--;
+                   a[s.charAt(i) - 'a'] --;
+               }
+               else
+                   a[s.charAt(i) - 'a'] --;
+                   i++;
+            } 
+               res += (j-i+1);
+               j++;
         }
-
-        return ans;
+        return res;
     }
 }
