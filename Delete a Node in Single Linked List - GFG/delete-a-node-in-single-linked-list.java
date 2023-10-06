@@ -70,37 +70,22 @@ class DeleteNode
 }
 // } Driver Code Ends
 
-
-/* Linklist node structure
-class Node
-{
-	int data;
-	Node next;
-	
-	Node(int d)
-	{
-		data = d;
-		next = null;
-	}
-}*/
-/*You are required to complete below method*/
 class GfG
 {
     Node deleteNode(Node head, int x)
     {
-	    
-	    if(x == 1)
-	    {
-            head=head.next;
-            return head;
-        }
-        
-        Node temp = head;
-        
-        for(int i = 1 ; i < x-1; i++)
-            temp = temp.next;
-
-        temp.next = temp.next.next;
-        return head;	
+	if(x == 1)
+	{
+	    head = head.next;
+	    return head;
+	}
+	Node temp = head;
+	for(int i=1;i<x-1;i++)
+	{
+	
+	    temp = temp.next;
+	}
+	temp.next = temp.next.next;
+	return head;
     }
 }
