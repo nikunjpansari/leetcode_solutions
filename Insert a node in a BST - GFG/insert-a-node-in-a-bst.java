@@ -95,25 +95,20 @@ class GFG {
 
 // } Driver Code Ends
 
-
-// User function Template for Java
-
 class Solution {
-    // Function to insert a node in a BST.
     Node insert(Node root, int x) {
-       
-       if(root == null)
-    {
-        Node node  = new Node(x);
-        return node;
-    }
-       if(root.data == x)
-       return root;
-       else if(root.data > x)
-       root.left = insert(root.left,x);
-       else
-       root.right =  insert(root.right,x);
-       
-       return root;
+        if(root == null)
+        {
+            Node node = new Node(x);
+            return node;
+        }
+        
+        if(root.data == x)
+        return root;
+        else if(root.data > x)
+        root.left = insert(root.left,x);
+        else
+        root.right = insert(root.right,x);
+        return root;
     }
 }
