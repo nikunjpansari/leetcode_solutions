@@ -4,7 +4,7 @@
 <p><span style="font-size: 18px;"><strong>Example 1:</strong></span></p>
 <pre><span style="font-size: 18px;"><strong>Input:
 </strong>&nbsp; &nbsp; &nbsp;2
-&nbsp;  /&nbsp;&nbsp; \ &nbsp; 1&nbsp;  &nbsp; 3
+&nbsp;  /&nbsp;&nbsp; \ &nbsp; <br>  1&nbsp;  &nbsp; 3
 K = 4
 <strong>Output: <br></strong>1 2 3 4<strong>
 Explanation: <br></strong>After inserting the node 4
