@@ -70,37 +70,16 @@ class GFG{
 
 // } Driver Code Ends
 
-
-
-
-/* node class of the linked list
-
-class Node
-{
-    int data;
-    Node next;
-    Node(int key)
-    {
-        data = key;
-        next = null;
-    }
-}
-
-*/
-
-
 class Solution {
-    // Function to pairwise swap elements of a linked list.
-    // It should returns head of the modified list
     public Node pairwiseSwap(Node head)
     {
-        if(head == null || head.next == null) 
-            return head;
+        if(head == null || head.next == null)
+        return head;
         
         Node t = pairwiseSwap(head.next.next);
         Node tmp = head.next;
         head.next = t;
         tmp.next = head;
-        return tmp; 
+        return tmp;
     }
 }
