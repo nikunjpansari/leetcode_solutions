@@ -26,17 +26,20 @@ class GFG
 class Solution { 
   
      static int isHappy(int n) { 
-          if(n<=0) 
-            return 0;
-        while(true){
-            int sum=0;
-            while(n!=0){
-              sum+=(n%10)*(n%10);
-              n=n/10;
+        while(true)
+        {
+            int sum = 0;
+            while(n != 0)
+            {
+                sum += (n%10) * (n%10);
+                n /= 10;
             }
-            if(sum/10==0){
-               if(sum==1||sum==7) return 1;
-               else return 0;
+            if(sum/10 == 0)
+            {
+                if(sum == 1 || sum ==7)
+                return 1;
+                else 
+                return 0;
             }
             n=sum;
         }
