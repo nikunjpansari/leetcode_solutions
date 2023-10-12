@@ -58,24 +58,22 @@ class GFG {
 // } Driver Code Ends
 
 
-
-
 // User function Template for Java
 
 class Solution {
     public static int floor(Node root, int x) {
-        int floor =-1;
-        while(root!=null)
+        int floor = -1;
+        while(root != null)
         {
-            if(root.data==x)
+            if(root.data == x)
             return x;
             else if(root.data < x)
             {
-                floor=root.data;
-                root=root.right;
+                floor = root.data;
+                root = root.right;
             }
             else
-            root=root.left;
+            root = root.left;
         }
         return floor;
     }
