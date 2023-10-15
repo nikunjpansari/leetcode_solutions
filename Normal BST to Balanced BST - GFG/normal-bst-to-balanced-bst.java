@@ -161,36 +161,38 @@ class BinarySearchTree
 
 class GfG
 {
-    void solve(Node root,ArrayList<Integer> arr)
-    {
-    if(root==null)
-    return;
-    
-    solve(root.left,arr);
-    arr.add(root.data);
-    solve(root.right,arr);
-    }
-
-Node bst(ArrayList<Integer> arr,int low,int high)
-{
-    if(low>high)
-    return null;
-    
-    int mid=(low+high)/2;
-    Node p= new Node(arr.get(mid));
-    p.left=bst(arr,low,mid-1);
-    p.right=bst(arr,mid+1,high);
-    
-    return p;
-    
-}
-
     Node buildBalancedTree(Node root) 
     {
-        ArrayList<Integer> arr=new ArrayList<>();
-        solve(root,arr);
-        int n=arr.size();
+        ArrayList<Integer> list = new ArrayList<>();
+        inOrderTraversal(root, list);
+        Node newRoot = sortedArrayBST(0, list.size() -1 ,  list);
         
-       return bst(arr,0,n-1);
+        return newRoot;
+    }
+    
+    private void inOrderTraversal(Node root, ArrayList<Integer> list)
+    {
+        if(root == null) return;
+        
+        inOrderTraversal(root.left, list);
+        list.add(root.data);
+        inOrderTraversal(root.right, list);
+        
+    }
+    
+    private Node sortedArrayBST(int start, int end , ArrayList<Integer> list)
+    {
+        
+        if(start > end)
+            return null;
+        
+        int mid = (start + end) /2;
+        
+        Node root = new Node(list.get(mid));
+        
+        root.left = sortedArrayBST(start, mid-1, list);
+        root.right = sortedArrayBST(mid+1, end , list);
+        
+        return root;
     }
 }
