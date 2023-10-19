@@ -39,27 +39,32 @@ class Solution
     {
         boolean[] vis= new boolean[V];
         
-        Queue<Integer> qq= new LinkedList<>();
-        qq.add(0);
-        int level=0;
+        Queue<Integer> q= new LinkedList<>();
+        q.add(0);
+        int l=0;
         
-        while(!qq.isEmpty()){
-            int s=qq.size();
+        while(!q.isEmpty())
+        {
+            int s=q.size();
             
-            while(s!=0){
+            while(s!=0)
+            {
                 
-                int x=qq.poll();
+                int x=q.poll();
                 
-                if(x==X) return level;
+                if(x==X) 
+                return l;
                 
                 vis[x]=true;
                 
-                for(int k: adj.get(x)){
-                    if(vis[k]==false) qq.add(k);
+                for(int k: adj.get(x))
+                {
+                    if(vis[k]==false) 
+                    q.add(k);
                 }
                 s--;
             }
-            level++;
+            l++;
             
         }
         return -1;
