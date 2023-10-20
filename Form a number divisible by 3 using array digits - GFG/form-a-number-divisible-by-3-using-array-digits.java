@@ -27,17 +27,14 @@ class GFG {
 // User function Template for Java
 
 class Solution {
-    static int isPossible(int N, int arr[]) 
-    {
+    static int isPossible(int N, int arr[]) {
         long sum = 0;
-        for(int i=0;i<N;i++)
-        {
-            sum = sum+arr[i];
+        for(int i = 0 ;i < N;i++){
+        sum += arr[i];        
         }
-
-        if(sum%3==0)
-            return 1;
+        if(sum % 3 == 0)
+        return 1;
         else
-            return 0;
+        return 0;
     }
 }
