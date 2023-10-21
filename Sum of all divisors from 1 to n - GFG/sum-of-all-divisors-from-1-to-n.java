@@ -20,16 +20,14 @@ class GFG
 }
 
 // } Driver Code Ends
-
-
-//User function Template for Java
 class Solution{
     static long sumOfDivisors(int N){
-        long ans = 0;
-       for(int i=1;i<=N;i++)
+       long res = 0;
+       for(int i = 1 ; i <= N; i++)
        {
-           ans+=(N/i)*i;
+       
+           res += (N/i) * i;
        }
-       return ans;
+       return res;
     }
 }
