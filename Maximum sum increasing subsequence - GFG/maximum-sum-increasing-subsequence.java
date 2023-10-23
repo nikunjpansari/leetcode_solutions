@@ -21,32 +21,30 @@ class GfG
         }
 }    
 // } Driver Code Ends
-
-
-//User function Template for Java
-
 class Solution
 {
-	public int maxSumIS(int a[], int n)  
+	public int maxSumIS(int arr[], int n)  
 	{  
-
-      int[] dp = new int[n];
-        for(int i = 0;i < n;i++) 
-            dp[i] = a[i];
-           
-        for(int i = 0;i < n;i++)
-        {
-            for(int j = 0; j < i;j++)
-            {
-                if(dp[j]< dp[i])
-                dp[i] = Math.max(dp[i],dp[j]+ a[i]);
-            }
-        }
-        int mx = 0;
-        for(int i = 0; i < n; i++)
-        {
-            mx = Math.max(mx,dp[i]);
-        }
-        return mx;
-	}
+	   int[] dp = new int[n];
+	   for(int i = 0; i < n;i++)
+	   {
+	       dp[i] = arr[i];
+	   }
+	   
+	   for(int i = 0 ; i < n ;i++)
+	   {
+	       for(int j = 0; j <i ;j++)
+	       {
+	           if(dp[j] < dp[i])
+	           dp[i] = Math.max(dp[i],dp[j] + arr[i]);
+	       }
+	   }
+	   
+	   int mx = 0;
+	   for(int i = 0 ;i<n;i++)
+	   {
+	       mx = Math.max(mx,dp[i]);
+	   }
+	   return mx;
+	}  
 }
