@@ -88,41 +88,34 @@ class Main {
     }
 }
 // } Driver Code Ends
-
-
-/*Complete the finction below
-Node is as follows
-class Node{
-    int data;
-    Node left,right;
-    Node(int d){
-        data=d;
-        left=right=null;
-    }
-}*/
 class Solution {
-    public int maxLevelSum(Node root) 
-    {
-        if (root == null)
-        return 0;
-        int result = root.data;
-        Queue<Node> q = new LinkedList<>();
-        q.add(root);
-        while (!q.isEmpty()) 
-        {
-            int count = q.size();
-            int sum = 0;
-            while (count-- > 0)
-            {
-                Node temp = q.poll();
-                sum = sum + temp.data;
-                if (temp.left != null)
-                q.add(temp.left);
-                if (temp.right != null)
-                q.add(temp.right);
-            }
-            result = Math.max(sum, result);
-        }
-            return result;
+    public int maxLevelSum(Node root) {
+      int minlevel = 1 , max = Integer.MIN_VALUE;
+      int l = 1;
+      Queue<Node> q = new LinkedList<>();
+      q.offer(root);
+      while(!q.isEmpty())
+      {
+          int sz = q.size();
+          int sum = 0;
+          for(int i = 0 ;i<sz;i++)
+          {
+            Node node  = q.poll();
+            sum += node.data;
+            
+            if(node.left != null)
+            q.offer(node.left);
+            
+            if(node.right != null) 
+            q.offer(node.right);
+          }
+          if(max < sum)
+          {
+              max = sum;
+              minlevel = l;
+          }
+          l++;
+      }
+      return max;
     }
 }
