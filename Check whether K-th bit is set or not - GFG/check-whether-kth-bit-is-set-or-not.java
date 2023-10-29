@@ -11,8 +11,9 @@ class CheckBit
 {
     static boolean checkKthBit(int n, int k)
     {
-         return ((n=n>>k)&1)!=0;
+     return ((n=n>>k)&1)!=0;   
     }
+    
 }
 
 //{ Driver Code Starts.
