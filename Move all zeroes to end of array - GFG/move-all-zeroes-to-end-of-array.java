@@ -28,18 +28,23 @@ public class Main {
     }
 }
 // } Driver Code Ends
+
+
+//User function Template for Java
+
 class Solution {
-    void pushZerosToEnd(int[] nums, int n) 
-    {
-    int j = 0;
-    for(int i = 0; i < n; i++) 
-    {
-        if(nums[i] != 0) {
-            int temp = nums[j];
+    void pushZerosToEnd(int[] nums, int n) {
+        int j =0 ;
+        for(int i = 0 ; i < n;i++)
+        {
+        if(nums[i] != 0)
+        {
+            int t = nums[j];
             nums[j] = nums[i];
-            nums[i] = temp;
-            j++;
+            nums[i] = t;
+        j++;
         }
-    }
+        }
+        
     }
 }
