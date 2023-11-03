@@ -46,8 +46,6 @@ class GfG {
 
 // } Driver Code Ends
 
-
-
 class MyStack
 {
     int top;
@@ -58,23 +56,22 @@ class MyStack
 		top = -1;
 	}
 	
-	//Function to push an integer into the stack.
     void push(int a)
-	{
-	    top+=1;
-	    arr[top] = a; 
-	} 
-	
-    //Function to remove an item from top of the stack.
-	int pop()
-	{
-         if(top != -1)
-         {
-            int t = arr[top];
-            arr[top] = 0;
-            top = top-1; 
-            return t;
-            }
-    return -1;
-	}
+    {
+    if(top==arr.length)
+    return;
+             
+    top=top+1;
+    arr[top]=a;
+    }
+    
+     int pop()
+    {          
+        if(top==-1)
+            return -1;
+         
+        int pos=arr[top];
+        top=top-1;
+        return pos;
+    }
 }
