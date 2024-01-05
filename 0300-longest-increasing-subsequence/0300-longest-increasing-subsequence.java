@@ -1,5 +1,3 @@
-// Time Complexity : O(N * log N)
-// Space Complexity : O(N)
 class Solution 
 {
     public int lengthOfLIS(int[] arr) 
@@ -8,14 +6,14 @@ class Solution
         ArrayList<Integer> ans = new ArrayList<>();
         ans.add(arr[0]);
 
-        int len = 1;
+        int l = 1;
 
         for (int i = 1; i < n; i++) 
         {
             if (arr[i] > ans.get(ans.size() - 1)) 
             {
                 ans.add(arr[i]);
-                len++;
+                l++;
             } 
             else 
             {
@@ -23,22 +21,23 @@ class Solution
                 ans.set(indx, arr[i]);
             }
         }
-        return len;
+        return l;
     }
     
     static int binarySearch(ArrayList<Integer> ans, int key) 
     {
-        int low = 0;
-        int high = ans.size() - 1;
-        while (low <= high) 
+        int l = 0;
+        int h = ans.size() - 1;
+        while (l <= h) 
         {
-            int mid = low + (high - low) / 2;
-            if (ans.get(mid) == key) return mid;
+            int mid = l + (h - l) / 2;
+            if (ans.get(mid) == key) 
+            return mid;
             else if (ans.get(mid) < key) 
-                low = mid + 1;
+                l = mid + 1;
             else 
-                high = mid - 1;
+                h = mid - 1;
         }
-        return high + 1;
+        return h + 1;
     }
 }
