@@ -1,20 +1,7 @@
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
-class Solution {
-   public int amountOfTime(TreeNode root, int start) {
+class Solution 
+{
+   public int amountOfTime(TreeNode root, int start) 
+   {
         HashMap<TreeNode, TreeNode> mpp = new HashMap<>();
         TreeNode targetNode = bfsToMapParents(root, mpp, start);
         int maxDistance = findMaxDistance(mpp, targetNode);
