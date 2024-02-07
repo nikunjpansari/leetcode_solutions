@@ -1,32 +1,31 @@
 class Solution {
     public String frequencySort(String s) {
-        int len = s.length();
-        HashMap<Character,Integer> freqMap = new HashMap();
-        
-        for(int idx = 0;idx<len;idx++){
-            char ch = s.charAt(idx);
-            freqMap.put(ch,freqMap.getOrDefault(ch,0)+1);
+        int n = s.length();
+        Map<Character,Integer> mp = new HashMap<>();
+
+        StringBuilder res = new StringBuilder();
+
+        for(char c :  s.toCharArray())
+        {
+            mp.put(c,mp.getOrDefault(c,0)+1);
         }
-        
-        PriorityQueue<Character> maxHeap;
-        maxHeap = new PriorityQueue<Character>((charA,charB)->        
-                  Integer.compare(freqMap.get(charB),freqMap.get(charA)));
-        
-        for(char ch : freqMap.keySet()){
-            maxHeap.add(ch);
+        PriorityQueue<Character> pq = new PriorityQueue<Character>((a,b)-> Integer.compare(mp.get(b),mp.get(a)));
+
+        for(char ch : mp.keySet())
+        {
+            pq.add(ch);
         }
-        
-        StringBuilder ansStr = new StringBuilder();
-        
-        while(maxHeap.size()>0){
-            char ch = maxHeap.remove();
-            int freq = freqMap.get(ch);
-            while(freq>0){
-                ansStr.append(ch);
-                freq--;
+
+        while(pq.size() > 0)
+        {
+            char ch = pq.remove();
+            int f = mp.get(ch);
+            while(f > 0 )
+            {
+            res.append(ch);
+            f--;
             }
         }
-        
-        return ansStr.toString();
+        return res.toString();
     }
 }
