@@ -1,29 +1,28 @@
 class Solution {
-   public void sortColors(int[] nums) {
-    int low = 0, mid = 0, high = nums.length - 1; // 3 pointers
+    public void sortColors(int[] nums) {
+        int n = nums.length;
+        int l = 0 ,mid = 0,h=n-1;
+        while(mid <= h)
+        {
+            if(nums[mid] == 0)
+            {
+                int t = nums[l];
+                nums[l] = nums[mid];
+                nums[mid] = t;
 
-    while (mid <= high) {
-        if (nums[mid] == 0) {
-            // swapping nums[low] and nums[mid]
-            int temp = nums[low];
-            nums[low] = nums[mid];
-            nums[mid] = temp;
-
-            low++;
+                l++;
+                mid++;
+            }
+            else if(nums[mid] == 1)
             mid++;
+            else
+            {
+                int t = nums[mid];
+                nums[mid] = nums[h];
+                nums[h] = t;
 
-        } else if (nums[mid] == 1) {
-            mid++;
-
-        } else {
-            // swapping nums[mid] and nums[high]
-            int temp = nums[mid];
-            nums[mid] = nums[high];
-            nums[high] = temp;
-
-            high--;
+                h--;
+            }
         }
     }
-}
-
 }
