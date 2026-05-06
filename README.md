@@ -1,4 +1,4 @@
-# LeetCode DSA Solutions
+# DSA Solutions
 
 Welcome to my repository of LeetCode problem solutions! This repository contains a collection of solutions to various LeetCode problems, organized by topic and difficulty level. These solutions aim to help you understand and master different Data Structures and Algorithms (DSA).
 
